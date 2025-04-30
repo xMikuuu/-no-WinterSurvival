@@ -837,7 +837,7 @@ Transform:
   m_GameObject: {fileID: 1195973279}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.999, y: -10.7946, z: -0.02387459}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 158.59439, y: 113.06853, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -902,6 +902,11 @@ SpriteRenderer:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4232657907656709687, guid: 0ccbd0f2c9a313a488d5845852e17dfc, type: 3}
   m_PrefabInstance: {fileID: 4476276898854757405}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &1804716996 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8590367718448338657, guid: 62e3dcc175cbd9b418411b407a3dc08b, type: 3}
+  m_PrefabInstance: {fileID: 5453285345675194075}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1825472296
 GameObject:
@@ -1032,6 +1037,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 7788865023153008226, guid: 6ee3923b525876640b2f78bf0ffad5db, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1804716996}
     - target: {fileID: 8082637590151300312, guid: 6ee3923b525876640b2f78bf0ffad5db, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1221,6 +1230,10 @@ PrefabInstance:
     - target: {fileID: 4232657907656709687, guid: 0ccbd0f2c9a313a488d5845852e17dfc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920716065532111328, guid: 0ccbd0f2c9a313a488d5845852e17dfc, type: 3}
+      propertyPath: gatheringDelay
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7706940397919542683, guid: 0ccbd0f2c9a313a488d5845852e17dfc, type: 3}
       propertyPath: m_Name
@@ -1414,6 +1427,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 736497508440795033, guid: a523d67e9a4d8e04f9f0c58b8b866f81, type: 3}
+      propertyPath: moneyUIUpdate.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 736497508440795033, guid: a523d67e9a4d8e04f9f0c58b8b866f81, type: 3}
+      propertyPath: moneyUIUpdate.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7701932729611694357, guid: a523d67e9a4d8e04f9f0c58b8b866f81, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -1525,6 +1546,9 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 5453285345675194075}
+  - {fileID: 1494662321405295865}
+  - {fileID: 8142479511196228509}
+  - {fileID: 6655299355977523259}
   - {fileID: 619394802}
   - {fileID: 4155270764979457927}
   - {fileID: 1003769490}
@@ -1532,6 +1556,3 @@ SceneRoots:
   - {fileID: 5492759620945594641}
   - {fileID: 1984978891}
   - {fileID: 1825472299}
-  - {fileID: 1494662321405295865}
-  - {fileID: 6655299355977523259}
-  - {fileID: 8142479511196228509}

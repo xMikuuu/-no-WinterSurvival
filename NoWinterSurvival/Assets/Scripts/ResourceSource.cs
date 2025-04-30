@@ -3,13 +3,20 @@ using UnityEngine;
 
 public class ResourceSource : MonoBehaviour
 {
-    private bool generateMoney;
+    [SerializeField] private float ammountOfResource;
+    [SerializeField] private float gatheringDelay;
+    private GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             StartCoroutine("AddResource");
-            Debug.Log("enter");
         }
     }
 
@@ -18,7 +25,6 @@ public class ResourceSource : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             StopCoroutine("AddResource");
-            Debug.Log("exit");
         }
     }
 
@@ -26,8 +32,8 @@ public class ResourceSource : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1);
-            Debug.Log("+1 resource");
+            yield return new WaitForSeconds(gatheringDelay);
+            gameManager.OnResourceChange.Invoke(ammountOfResource);
         }
     }
 

@@ -3,13 +3,20 @@ using UnityEngine;
 
 public class MoneySource : MonoBehaviour
 {
-    private bool generateMoney;
+    [SerializeField] private float sellValue;
+    [SerializeField] private float sellDelay;
+    private GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             StartCoroutine("AddMoney");
-            Debug.Log("enter");
         }
     }
 
@@ -18,7 +25,6 @@ public class MoneySource : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             StopCoroutine("AddMoney");
-            Debug.Log("exit");
         }
     }
 
@@ -26,9 +32,9 @@ public class MoneySource : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1);
-            Debug.Log("-1 res, +1gold");
-            //to do moneyUIUpdate.Invoke();
+            yield return new WaitForSeconds(sellDelay);
+            //gameManager.money += sellValue;
+            gameManager.OnMoneyChange.Invoke(sellValue);
         }
     }
 

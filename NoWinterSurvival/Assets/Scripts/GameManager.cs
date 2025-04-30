@@ -3,20 +3,48 @@ using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
-    public float money;
-
+    private float money;
+    private float resource;
+    private float moneyUpdateValue;
+    private float resourceUpdateValue;
+    
+    public static GameManager Instance;
     // Events
-    public UnityEvent moneyUIUpdate;
+    public UnityEvent<float> OnMoneyChange = new UnityEvent<float>();
+    public UnityEvent<float> OnResourceChange = new UnityEvent<float>();
 
-
-    private void Start()
+    private void Awake()
     {
-        moneyUIUpdate = new UnityEvent();
-        moneyUIUpdate.AddListener(UpdateUI);
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
 
-    private void UpdateUI()
+
+    private void OnEnable()
     {
-        Debug.Log("updated UI");
+        OnMoneyChange.AddListener(UpdateMoney);
+        OnResourceChange.AddListener(UpdateResource);
+    }
+    private void OnDestroy()
+    {
+        OnMoneyChange.RemoveListener(UpdateMoney);
+        OnResourceChange.RemoveListener(UpdateResource);
+    }
+
+    private void UpdateMoney(float moneyUpdateValue)
+    {
+        money += moneyUpdateValue;
+        UIManager.Instance.OnMoneyChange.Invoke(money);
+    }
+    private void UpdateResource(float resourceUpdateValue)
+    {
+        resource += resourceUpdateValue;
+        UIManager.Instance.OnResourceChange.Invoke(resource);
     }
 }
