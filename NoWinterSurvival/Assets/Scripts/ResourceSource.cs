@@ -1,15 +1,31 @@
+using System;
 using System.Collections;
+using System.Threading;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ResourceSource : MonoBehaviour
 {
-    [SerializeField] private float ammountOfResource;
-    [SerializeField] private float gatheringDelay;
+    private int ammountOfResource;
+    private float gatheringDelay;
+    private ResourceList resourceList;
+    [SerializeField] private TMP_Text resourceText;
+    [SerializeField] private SpriteRenderer resourceImage;
+    private Resource resource;
+    private int resourceAmmountInVein;
+
     private GameManager gameManager;
 
-    private void Awake()
+    private void Start()
     {
         gameManager = GameManager.Instance;
+        resourceList = gameManager.resourceList;
+        resource = resourceList.ListOfScriptableObjects[UnityEngine.Random.Range(0, resourceList.ListOfScriptableObjects.Count)];
+        gatheringDelay = resource.resourceTimeToObtain;
+
+        resourceAmmountInVein = UnityEngine.Random.Range(resource.ammountOfResourceInVein[0], resource.ammountOfResourceInVein[1]);
+        resourceText.text = resource.resourceName + "\n(" + resourceAmmountInVein + ")";
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,7 +49,15 @@ public class ResourceSource : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(gatheringDelay);
-            gameManager.OnResourceChange.Invoke(ammountOfResource);
+            ammountOfResource = UnityEngine.Random.Range(resource.resourceAmmountObtained[0], resource.resourceAmmountObtained[1]);
+            if(resourceAmmountInVein - ammountOfResource < 0)
+            {
+                ammountOfResource = resourceAmmountInVein;
+                Destroy(gameObject);
+            }
+            resourceAmmountInVein -= ammountOfResource;
+            resourceText.text = resource.resourceName + "\n(" + resourceAmmountInVein + ")";
+            gameManager.OnResourceChange.Invoke(ammountOfResource,resource.resourceName);
         }
     }
 
