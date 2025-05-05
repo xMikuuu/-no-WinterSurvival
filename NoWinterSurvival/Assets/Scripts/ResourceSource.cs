@@ -7,13 +7,13 @@ using UnityEngine.UI;
 
 public class ResourceSource : MonoBehaviour
 {
-    private int ammountOfResource;
+    private float ammountOfResource;
     private float gatheringDelay;
     private ResourceList resourceList;
     [SerializeField] private TMP_Text resourceText;
     [SerializeField] private SpriteRenderer resourceImage;
     private Resource resource;
-    private int resourceAmmountInVein;
+    private float resourceAmmountInVein;
 
     private GameManager gameManager;
 
@@ -24,8 +24,9 @@ public class ResourceSource : MonoBehaviour
         resource = resourceList.ListOfScriptableObjects[UnityEngine.Random.Range(0, resourceList.ListOfScriptableObjects.Count)];
         gatheringDelay = resource.resourceTimeToObtain;
 
-        resourceAmmountInVein = UnityEngine.Random.Range(resource.ammountOfResourceInVein[0], resource.ammountOfResourceInVein[1]);
+        resourceAmmountInVein = UnityEngine.Random.Range((int)resource.ammountOfResourceInVein[0], (int)resource.ammountOfResourceInVein[1]);
         resourceText.text = resource.resourceName + "\n(" + resourceAmmountInVein + ")";
+        resourceImage.sprite = resource.resourceIcon;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -49,7 +50,8 @@ public class ResourceSource : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(gatheringDelay);
-            ammountOfResource = UnityEngine.Random.Range(resource.resourceAmmountObtained[0], resource.resourceAmmountObtained[1]);
+            ammountOfResource = Mathf.Round(UnityEngine.Random.Range(resource.resourceAmmountObtained[0], resource.resourceAmmountObtained[1]));
+            Debug.Log(ammountOfResource);
             if(resourceAmmountInVein - ammountOfResource < 0)
             {
                 ammountOfResource = resourceAmmountInVein;

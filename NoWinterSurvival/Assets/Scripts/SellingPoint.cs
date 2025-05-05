@@ -7,7 +7,7 @@ public class SellingPoint : MonoBehaviour
     private GameManager gameManager;
     private UIManager uiManager;
     private float sellingValue;
-    [SerializeField] private int sellingDelay;
+    [SerializeField] private float sellingDelay;
 
     private void Start()
     {

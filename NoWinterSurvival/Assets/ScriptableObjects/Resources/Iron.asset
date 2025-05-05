@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 423f1796ac7f5434dae49bee476903cb, type: 3}
   m_Name: Iron
   m_EditorClassIdentifier: 
+  resourceIcon: {fileID: 5103231540499187363, guid: 4916aebdea0bb3242b266e70bed1694c, type: 3}
   resourceName: Iron
   resourceValue: 3
   resourceTimeToObtain: 4
-  resourceAmmountObtained: 0300000005000000
-  ammountOfResourceInVein: 3200000064000000
+  resourceAmmountObtained:
+  - 2
+  - 4
+  ammountOfResourceInVein:
+  - 70
+  - 90

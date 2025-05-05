@@ -12,8 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 423f1796ac7f5434dae49bee476903cb, type: 3}
   m_Name: Coal
   m_EditorClassIdentifier: 
+  resourceIcon: {fileID: -228819513787663229, guid: 64075a3d121a7e744a1f9153e1b5b8d3, type: 3}
   resourceName: Coal
   resourceValue: 2
   resourceTimeToObtain: 1
-  resourceAmmountObtained: 0300000005000000
-  ammountOfResourceInVein: 4b0000006e000000
+  resourceAmmountObtained:
+  - 1.5
+  - 4.5
+  ammountOfResourceInVein:
+  - 80
+  - 120

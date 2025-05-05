@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 423f1796ac7f5434dae49bee476903cb, type: 3}
   m_Name: Gold
   m_EditorClassIdentifier: 
+  resourceIcon: {fileID: -3988769855312385993, guid: 7a85082a5c5947741a70eabe3cd062e3, type: 3}
   resourceName: Gold
   resourceValue: 5
   resourceTimeToObtain: 5
   resourceAmmountObtained:
+  - 1
   - 3
-  - 4
   ammountOfResourceInVein:
-  - 25
   - 50
+  - 75

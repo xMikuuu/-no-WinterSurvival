@@ -17,7 +17,7 @@ public class UIManager : MonoBehaviour
     public UnityEvent<float> OnMoneyChange = new UnityEvent<float>();
     public UnityEvent OnResourceChange = new UnityEvent();
 
-    private void Awake()
+    private void Start()
     {
         if (Instance != null && Instance != this)
         {

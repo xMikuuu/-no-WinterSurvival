@@ -5,11 +5,10 @@ using UnityEngine.UIElements;
 [CreateAssetMenu(fileName = "Resource", menuName = "Scriptable Objects/Resource")]
 public class Resource : ScriptableObject
 {
-    public Image resourceIcon;
+    public Sprite resourceIcon;
     public string resourceName;
     public float resourceValue;
     public float resourceTimeToObtain;
-    //public int resourceTimeToSell;
-    public List<int> resourceAmmountObtained;
-    public List<int> ammountOfResourceInVein;
+    public List<float> resourceAmmountObtained;
+    public List<float> ammountOfResourceInVein;
 }
