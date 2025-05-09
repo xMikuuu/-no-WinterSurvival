@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70208703cbfdcb94e9412a216a7da734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sellingDelay: 2
+  sellingDelay: 0.01
 --- !u!50 &4665309387453862411
 Rigidbody2D:
   serializedVersion: 5

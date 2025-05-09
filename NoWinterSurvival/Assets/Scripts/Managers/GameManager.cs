@@ -48,7 +48,6 @@ public class GameManager : MonoBehaviour
     private void UpdateMoney(float moneyUpdateValue)
     {
         money += moneyUpdateValue;
-        ClearDictionary();
         UIManager.Instance.OnMoneyChange.Invoke(money);
     }
     private void UpdateResource(float resourceUpdateValue,string resourceName)
@@ -56,6 +55,7 @@ public class GameManager : MonoBehaviour
         resources[resourceName] += resourceUpdateValue;
         UIManager.Instance.OnResourceChange.Invoke();
     }
+
 
     private void ClearDictionary()
     {

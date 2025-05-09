@@ -1,4 +1,7 @@
+using Mono.Cecil;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -23,20 +26,33 @@ public class SellingPoint : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            StopCoroutine("SellResources");
+        }
+    }
+
     IEnumerator SellResources()
     {
-        yield return new WaitForSeconds(sellingDelay);
-        foreach (var i in gameManager.resources.Keys)
+        List<string> keys = gameManager.resources.Keys.ToList();
+        foreach (var i in keys)
         {
             for (int j = 0; j < gameManager.resourceList.ListOfScriptableObjects.Count; j++)
             {
                 if(i == gameManager.resourceList.ListOfScriptableObjects[j].resourceName)
                 {
-                    sellingValue += gameManager.resources[i] * gameManager.resourceList.ListOfScriptableObjects[j].resourceValue;
+                    float resourceAmmount = gameManager.resources[i];
+                    for(float k = 0; k < resourceAmmount; k++)
+                    {
+                        sellingValue = gameManager.resourceList.ListOfScriptableObjects[j].resourceValue;
+                        gameManager.OnMoneyChange.Invoke(sellingValue);
+                        gameManager.OnResourceChange.Invoke(-1, i);
+                        yield return new WaitForSeconds(sellingDelay);
+                    }
                 }
             }
         }
-        gameManager.OnMoneyChange.Invoke(sellingValue);
-        StopCoroutine("SellResources");
     }
 }
