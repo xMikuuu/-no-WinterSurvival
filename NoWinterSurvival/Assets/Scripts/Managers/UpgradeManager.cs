@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
@@ -21,6 +22,10 @@ public class UpgradeManager : MonoBehaviour
     private float goldObtainingModifier;
     private float goldVineModifier;
 
+    public Dictionary<string, float> CoalModifiers;
+    public Dictionary<string, float> IronModifiers;
+    public Dictionary<string, float> GoldModifiers;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -33,4 +38,8 @@ public class UpgradeManager : MonoBehaviour
         }
 
     }
+    public void Upgrade(Upgrade upgrade)
+    {
+        Debug.Log(upgrade.name);
+    } 
 }
