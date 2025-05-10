@@ -1361,6 +1361,10 @@ PrefabInstance:
       propertyPath: UpgradesCanvas
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3534444218334030617, guid: 6ee3923b525876640b2f78bf0ffad5db, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4982138744173400136, guid: 6ee3923b525876640b2f78bf0ffad5db, type: 3}
       propertyPath: m_Name
       value: UI
